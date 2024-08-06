@@ -8,9 +8,16 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	err := godotenv.Load()
+	if err == nil {
+		log.Println("Loaded .env file.")
+	}
+
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "80"
@@ -25,6 +32,9 @@ func main() {
 			message += " from " + appName
 		}
 		message += "!"
+		if motd != "" {
+			message += " " + motd
+		}
 		w.Write([]byte(message))
 	})
 
