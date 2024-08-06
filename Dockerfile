@@ -13,4 +13,4 @@ COPY ssm-env.sh /app/ssm-env.sh
 
 EXPOSE 80
 
-CMD ["/bin/sh", "-c", "./ssm-env.sh; /app/main"]
+CMD ["/bin/sh", "-c", "/app/ssm-env.sh; /app/main"]
