@@ -1,9 +1,10 @@
-FROM golang:1.21-alpine AS builder
+FROM golang:1.22-alpine AS builder
 WORKDIR /app
 RUN wget https://github.com/Droplr/aws-env/raw/master/bin/aws-env-linux-amd64 -O aws-env
 RUN chmod +x aws-env
-COPY src/main.go .
-RUN go build main.go
+COPY . .
+RUN go mod download
+RUN go build src/main.go
 
 FROM alpine:latest
 RUN apk add --no-cache wget
