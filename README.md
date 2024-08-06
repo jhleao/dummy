@@ -15,8 +15,8 @@ Optional features:
 ## Environment Variables
 
 - `PORT`: The port on which the server will listen (default: 80)
-- `AWS_REGION`: The AWS region to use for AWS SSM Parameter Store.
-- `ENV_SLUG`: The environment slug to use for AWS SSM Parameter Store.
+- `AWS_REGION`: _(optional)_ The AWS region to use for AWS SSM Parameter Store.
+- `ENV_SLUG`: _(optional)_ The environment slug to use for AWS SSM Parameter Store.
 - `APP_NAME`: _(optional)_ The name of app. Used to identify the instance.
 - `MOTD`: _(optional)_ Message of the Day, included in periodic logs. Purpose is to test environment variable usage.
 - `REACH_URL_<slug>`: _(optional)_ URLs for the `/reach/:slug` endpoint (e.g., `REACH_URL_APP1`, `REACH_URL_INTERNET`, etc.). Purpose is testing network reachability (firewall, DNS, internet connection, etc.). Responses are returned to the original request.
