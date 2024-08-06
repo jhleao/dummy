@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -32,10 +33,12 @@ func main() {
 	})
 
 	http.HandleFunc("/reach/", func(w http.ResponseWriter, r *http.Request) {
-		number := r.URL.Path[len("/reach/"):]
-		reachURL := os.Getenv("REACH_URL_" + number)
+		postfix := r.URL.Path[len("/reach/"):]
+		uppercasePostfix := strings.ToUpper(postfix)
+		reachURL := os.Getenv("REACH_URL_" + uppercasePostfix)
+
 		if reachURL == "" {
-			fmt.Fprintf(w, "REACH_URL_%s is not set.", number)
+			fmt.Fprintf(w, "REACH_URL_%s is not set.", uppercasePostfix)
 			return
 		}
 
